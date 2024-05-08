@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Edge
   - enemy
+  - ingredient
   layers:
   - Default
   - TransparentFX

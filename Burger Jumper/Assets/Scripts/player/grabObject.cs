@@ -12,8 +12,9 @@ public class grabObject : MonoBehaviour
     private Transform rayPoint;
     [SerializeField]
     private float rayDistance;
+    public GameManager GameManagerScript;
 
-    private GameObject grabbedObject;
+    [HideInInspector]public GameObject grabbedObject;
     private int layerIndex;
     // Start is called before the first frame update
     void Start()
@@ -31,13 +32,18 @@ public class grabObject : MonoBehaviour
             //grab object
             if (Keyboard.current.spaceKey.wasPressedThisFrame && grabbedObject == null){
                 grabbedObject  = hitInfo.collider.gameObject;
-                grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                Debug.Log("Grabbed object:" + grabbedObject);
+                GameManagerScript.ball = hitInfo.collider.gameObject.GetComponent<ball>();
+                GameManagerScript.trajectory = hitInfo.collider.gameObject.GetComponentInChildren<Trajectory>();
+                grabbedObject.GetComponent<ball>().DesactivateRb();
                 grabbedObject.transform.position = grabPoint.position;
                 grabbedObject.transform.SetParent(transform);
             }
 
             else if(Keyboard.current.spaceKey.wasPressedThisFrame && grabbedObject){
-                grabbedObject.GetComponent<Rigidbody2D>().isKinematic = false;
+                GameManagerScript.ball = null;
+                GameManagerScript.trajectory = null;
+                grabbedObject.GetComponent<ball>().ActivateRb();
                 grabbedObject.transform.SetParent(null);
                 grabbedObject = null;
             }

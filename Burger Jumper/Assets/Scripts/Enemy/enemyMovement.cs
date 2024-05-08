@@ -20,9 +20,9 @@ public class enemyMovement : MonoBehaviour
         
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Enemy colllided with: " + other);
+        // Debug.Log("Enemy colllided with: " + other);
         if (other.tag == "Edge"){
-            Debug.Log("Switch ");
+            // Debug.Log("Switch ");
             flip *= -1;
         }
         
