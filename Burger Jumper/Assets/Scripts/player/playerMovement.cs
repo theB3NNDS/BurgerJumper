@@ -48,7 +48,7 @@ public class playerMovement : MonoBehaviour
 
     private void PerformJump (InputAction.CallbackContext obj)
     {
-        Debug.Log("Jumped");
+        
         Jump();
     }
 }
