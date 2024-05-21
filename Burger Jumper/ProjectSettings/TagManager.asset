@@ -7,6 +7,7 @@ TagManager:
   - Edge
   - enemy
   - ingredient
+  - Audio
   layers:
   - Default
   - TransparentFX
