@@ -12,6 +12,8 @@ public class OrderMechanic : MonoBehaviour
     private String[] typesOfIngredient = {"Patty", "Cheese", "Lettuce"};
     public int orderComplete = 10;
     public int points = 0;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,22 +42,52 @@ public class OrderMechanic : MonoBehaviour
         }
     }
 
-    void RingBell(){
+    public void RingBell(){
 
+
+   
+        //compare Order and OrderBeingPrepared
         if(CompareOrderToDish(dishBeingPrepared, Order)){
             OrderIsCompleted();
         } else{
-            points--;
+            --points;
+            Debug.Log("Order" +DisplayOrderUI(Order));
+            Debug.Log("Dish being prepared" + DisplayOrderUI(dishBeingPrepared));
+
         }
         CleanDishes();
         GenerateOrder();
+
+        //If Order matches OrderBeingPrepared 
+        // -Score 1 points
+        // -Increment Dishcompleted ++
+        //Else
+        // -deduct points
+        
+        //Refresh
+        
     }
 
-    bool CompareOrderToDish(String[] dishBeingPrepared, String[] Order){
-        return  dishBeingPrepared == Order;
-    }
+public static bool CompareOrderToDish(string[] dishBeingPrepared, string[] order)
+{
+  // Check for invalid array sizes
+  if (dishBeingPrepared == null || order == null || dishBeingPrepared.Length != 5 || order.Length != 5)
+  {
+    return false; // Arrays are not valid (null or different size)
+  }
 
-    void OrderIsCompleted(){
+  // Compare elements and order
+  for (int i = 0; i < dishBeingPrepared.Length; i++)
+  {
+    if (dishBeingPrepared[i] != order[i])
+    {
+      return false; // Elements at the same index are not equal
+    }
+  }
+
+  return true; // All elements are equal and in the same order
+}
+    public void OrderIsCompleted(){
         orderComplete++;
         points++;
     }
@@ -68,7 +100,7 @@ public class OrderMechanic : MonoBehaviour
     }
 
 
-    void CleanDishes(){
+    public void CleanDishes(){
         for(int i = 0; i < 5; i++){
             dishBeingPrepared[i] = null;
         } 

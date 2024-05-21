@@ -1,14 +1,27 @@
-    using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ball : MonoBehaviour
 {
+
+	public String Identifier;
    [HideInInspector] public Rigidbody2D rb;
 	[HideInInspector] public CircleCollider2D col;
 
 	[HideInInspector] public Vector3 pos { get { return transform.position; } }
 
+
+	private void Start() {
+		if(gameObject.transform.parent.name.StartsWith("Lettuce Variant") ){
+               Identifier = "Lettuce";
+           } else if(gameObject.transform.parent.name.StartsWith("Patty")){
+                Identifier = "Patty";
+           } else{
+            Identifier = "Cheese";
+           }
+	}
 	void Awake ()
 	{
 		rb = GetComponent<Rigidbody2D> ();
