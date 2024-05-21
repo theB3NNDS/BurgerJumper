@@ -3,19 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using static UnityEngine.Random;
 using UnityEngine;
+using Unity.Burst.CompilerServices;
 
 public class OrderMechanic : MonoBehaviour
 {
-    private String[] dishBeingPrepared = new String[5];
-    private String[] Order = new String[5]; 
+    public String[] dishBeingPrepared = new String[5];
+    public String[] Order = new String[5]; 
     private String[] typesOfIngredient = {"Patty", "Cheese", "Lettuce"};
     public int orderComplete = 10;
     public int points = 0;
     // Start is called before the first frame update
     void Start()
     {
+        CleanDishes();
         GenerateOrder();
-        DisplayOrder();
+        DisplayOrder(Order);
     }
 
     // Update is called once per frame
@@ -58,9 +60,13 @@ public class OrderMechanic : MonoBehaviour
         points++;
     }
 
-    void DisplayOrder(){
-        Debug.Log("1st: " + Order[0] + "\n2nd: " + Order[1] + "\n3rd: " + Order[2] + "\n4th: " + Order[3] + "\n5th: " + Order[4]);
+    void DisplayOrder(String[] order){
+        Debug.Log("1st: " + order[0] + "\n2nd: " + order[1] + "\n3rd: " + order[2] + "\n4th: " + order[3] + "\n5th: " + order[4]);
     }
+    public String DisplayOrderUI(String[] order){
+        return ("1st: " + order[0] + "\n2nd: " + order[1] + "\n3rd: " + order[2] + "\n4th: " + order[3] + "\n5th: " + order[4]);
+    }
+
 
     void CleanDishes(){
         for(int i = 0; i < 5; i++){
@@ -69,6 +75,19 @@ public class OrderMechanic : MonoBehaviour
         for(int i = 0; i < 5; i++){
             Order[i] = null;
         } 
+    }
+
+    public void AddIngredientToDish(string ingredient){
+        for(int i = 0; dishBeingPrepared.Length > i; i++){
+            if(dishBeingPrepared[i] != null){
+                continue;
+            } else
+            dishBeingPrepared.SetValue(ingredient, i);
+            break;
+
+        }
+        
+
     }
 
    

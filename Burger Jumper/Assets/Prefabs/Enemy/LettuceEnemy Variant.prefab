@@ -13,12 +13,20 @@ PrefabInstance:
       value: LettuceEnemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3801788336240227192, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.945105
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801788336240227192, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.331887
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801788336240227192, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.0987
+      value: -19.81
       objectReference: {fileID: 0}
     - target: {fileID: 3801788336240227192, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.66
+      value: -2.33
       objectReference: {fileID: 0}
     - target: {fileID: 3801788336240227192, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
       propertyPath: m_LocalPosition.z
