@@ -10,8 +10,8 @@ public class playerMovement : MonoBehaviour
     public InputActionReference move;
     public InputActionReference jump;
 
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private float moveSpeed = 25f;
+    [SerializeField] private float jumpForce = 30f;
 
 
     // Start is called before the first frame update
