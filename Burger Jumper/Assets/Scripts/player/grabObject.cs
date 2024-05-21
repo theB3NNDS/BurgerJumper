@@ -30,7 +30,7 @@ public class grabObject : MonoBehaviour
         if(hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex){
             
             //grab object
-            if (Keyboard.current.spaceKey.wasPressedThisFrame && grabbedObject == null){
+            if (Keyboard.current.eKey.wasPressedThisFrame && grabbedObject == null){
                 grabbedObject  = hitInfo.collider.gameObject;
                 Debug.Log("Grabbed object:" + grabbedObject);
                 GameManagerScript.ball = hitInfo.collider.gameObject.GetComponent<ball>();
@@ -40,12 +40,14 @@ public class grabObject : MonoBehaviour
                 grabbedObject.transform.SetParent(transform);
             }
 
-            else if(Keyboard.current.spaceKey.wasPressedThisFrame && grabbedObject){
+            else if(Keyboard.current.eKey.wasPressedThisFrame && grabbedObject){
                 GameManagerScript.ball = null;
                 GameManagerScript.trajectory = null;
-                grabbedObject.GetComponent<ball>().ActivateRb();
                 grabbedObject.transform.SetParent(null);
                 grabbedObject = null;
+                grabbedObject.GetComponent<ball>().ActivateRb();
+                // grabbedObject.transform.SetParent(null);
+                // grabbedObject = null;
             }
         }
 

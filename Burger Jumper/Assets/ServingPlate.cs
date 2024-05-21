@@ -21,15 +21,12 @@ public class ServingPlate : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.name == "TrajectoryBall"){
-           if( other.gameObject.transform.parent.name.StartsWith("Lettuce Variant") ){
-                scriptOrderMechanic.AddIngredientToDish("Lettuce");
-           } else if(other.gameObject.transform.parent.name.StartsWith("Patty")){
-                scriptOrderMechanic.AddIngredientToDish("Patty");
-           } else{
-            scriptOrderMechanic.AddIngredientToDish("Cheese");
-           }
-                Destroy(other.gameObject);
+            scriptOrderMechanic.AddIngredientToDish(other.gameObject.GetComponent<ball>().Identifier);
+            Destroy(other.gameObject);
+          Debug.Log(other.gameObject.GetComponent<ball>().Identifier);
         }
-        Debug.Log("Plate collided with " + other.gameObject.transform.parent.name);
+        
     }
+
+    //typesOfIngredient = {"Patty", "Cheese", "Lettuce"};
 }
