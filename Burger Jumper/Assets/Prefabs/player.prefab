@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2501701062595700698}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.051, y: -0.755, z: -0.0068394616}
+  m_LocalPosition: {x: 0.063, y: -0.77, z: -0.0068394616}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62,7 +62,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.07580452, y: 0.43966627}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cd9a2a0a9864747b6da405fb09d263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounce: 2
+  bounce: 5
   rb: {fileID: 4247029001881572495}
 --- !u!1 &2725579371148442186
 GameObject:
@@ -106,6 +106,8 @@ GameObject:
   - component: {fileID: 4247029001881572495}
   - component: {fileID: 2776224179177072628}
   - component: {fileID: 2966021643082305534}
+  - component: {fileID: 1040228490807873909}
+  - component: {fileID: 8929508191206590401}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -123,10 +125,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4167174, y: -1.7364455, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8527732622456561085}
+  - {fileID: 3743048224707007095}
+  - {fileID: 8535136708958110670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6556139468962302499
@@ -170,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1382478723, guid: 80242ef4692585a4b8ba0d7ab7768bef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15e4472cd3db23d458130897b490c928, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,8 +200,8 @@ MonoBehaviour:
   rb: {fileID: 4247029001881572495}
   move: {fileID: -1908397907895516124, guid: 0b135416cd1f3544388b9f1e2a5b98d2, type: 3}
   jump: {fileID: -4690952365750374784, guid: 0b135416cd1f3544388b9f1e2a5b98d2, type: 3}
-  moveSpeed: 0
-  jumpForce: 14
+  moveSpeed: 6
+  jumpForce: 7
 --- !u!50 &4247029001881572495
 Rigidbody2D:
   serializedVersion: 4
@@ -224,7 +228,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2776224179177072628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -257,18 +261,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0034796447, y: -0.1774629}
+  m_Offset: {x: 0.0060549676, y: -0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.5, y: 2.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4780505, y: 0.6589928}
+  m_Size: {x: 0.74029, y: 0.6589928}
   m_EdgeRadius: 0
 --- !u!114 &2966021643082305534
 MonoBehaviour:
@@ -300,3 +304,94 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1040228490807873909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725579371148442186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471c2e6ea44d98147be489fe00c5fd3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8929508191206590401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725579371148442186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f22cc6fde036de4e90874be015c839d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabPoint: {fileID: 8535136708958110670}
+  rayPoint: {fileID: 3743048224707007095}
+  rayDistance: 0.2
+  GameManagerScript: {fileID: 0}
+  grabbedObject: {fileID: 0}
+--- !u!1 &3886090873140349845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8535136708958110670}
+  m_Layer: 0
+  m_Name: grabPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8535136708958110670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3886090873140349845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15, y: 0.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4438804277133872617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6359616210117395707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3743048224707007095}
+  m_Layer: 0
+  m_Name: rayPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3743048224707007095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359616210117395707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42, y: -0.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4438804277133872617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
