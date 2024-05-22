@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheeseEnemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 19057756963626762, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 762746215571551952, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
       propertyPath: ingredient
       value: 

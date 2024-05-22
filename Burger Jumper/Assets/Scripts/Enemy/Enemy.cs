@@ -7,10 +7,12 @@ public class Enemy : MonoBehaviour
 {
     public GameObject ingredient;
     private Transform currentPosition;
+
+    //[SerializeField] Spawner spawnerScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class Enemy : MonoBehaviour
     public void Death(){
         CreateIngredient();
         Destroy(gameObject);
-
+        Spawner.numberOfEnemies--;
     }
 
     public void CreateIngredient(){
