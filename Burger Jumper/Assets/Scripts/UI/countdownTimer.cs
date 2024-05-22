@@ -24,7 +24,7 @@ public class countdownTimer : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            SceneManager.LoadScene("TitleScreen");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

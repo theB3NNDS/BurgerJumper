@@ -5,6 +5,7 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
 
+    public 
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +15,19 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var lowerLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+
+        if (gameObject.transform.position.y < lowerLeft.y)
+        {
+            gameObject.transform.position = new Vector3(0, 0, 0);
+            gameObject.GetComponent<playerMovement>().TakeDamage();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "enemy"){
-            Death();
+            // Debug.Log("collided with enemy");
+            gameObject.transform.position = new Vector3(0, 0, 0);
         }
     }
 
