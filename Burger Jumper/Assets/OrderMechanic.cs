@@ -7,11 +7,13 @@ using Unity.Burst.CompilerServices;
 
 public class OrderMechanic : MonoBehaviour
 {
+    public static OrderMechanic instance;
     public String[] dishBeingPrepared = new String[5];
     public String[] Order = new String[5]; 
     private String[] typesOfIngredient = {"Patty", "Cheese", "Lettuce"};
     public int orderComplete = 10;
     public int points = 0;
+    public GameObject[] burgers;
 
     
     // Start is called before the first frame update
@@ -22,9 +24,22 @@ public class OrderMechanic : MonoBehaviour
         DisplayOrder(Order);
     }
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if(CompareOrderToDish(dishBeingPrepared, Order)){
+            print(burgers);
+            foreach (GameObject burger in burgers)
+            {
+                burger.SetActive(true);
+            }
+
+        }
          //DisplayOrder();
     }
 
@@ -48,7 +63,14 @@ public class OrderMechanic : MonoBehaviour
    
         //compare Order and OrderBeingPrepared
         if(CompareOrderToDish(dishBeingPrepared, Order)){
+            GameObject[] burgers = GameObject.FindGameObjectsWithTag("burger");
+           
             OrderIsCompleted();
+             foreach (GameObject burger in burgers)
+            {
+                burger.SetActive(false);
+            }
+
         } else{
             --points;
             Debug.Log("Order" +DisplayOrderUI(Order));
@@ -68,7 +90,7 @@ public class OrderMechanic : MonoBehaviour
         
     }
 
-public static bool CompareOrderToDish(string[] dishBeingPrepared, string[] order)
+public bool CompareOrderToDish(string[] dishBeingPrepared, string[] order)
 {
   // Check for invalid array sizes
   if (dishBeingPrepared == null || order == null || dishBeingPrepared.Length != 5 || order.Length != 5)
