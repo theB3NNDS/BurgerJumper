@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: ingredient
       value: 
       objectReference: {fileID: 7429695684427415692, guid: 1e9a0bd066ae89c4dafadf55de3a0651, type: 3}
+    - target: {fileID: 2457902570885257644, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3801788336240227192, guid: 6d8f367c0bd91f14f9c98eb171fad6d8, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.945105
