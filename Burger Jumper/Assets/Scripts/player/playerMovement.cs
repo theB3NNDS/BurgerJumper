@@ -17,6 +17,14 @@ public class playerMovement : MonoBehaviour
 
     [SerializeField] int playerHealth = 3;
     [SerializeField] TextMeshProUGUI healthText;
+
+    audioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +46,7 @@ public class playerMovement : MonoBehaviour
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        audioManager.PlaySFX(audioManager.jump);
     }
 
     private void OnEnable()
@@ -52,7 +61,6 @@ public class playerMovement : MonoBehaviour
 
     private void PerformJump (InputAction.CallbackContext obj)
     {
-        
         Jump();
     }
     private void OnCollisionEnter2D(Collision2D other) {
@@ -65,6 +73,7 @@ public class playerMovement : MonoBehaviour
     {
         playerHealth -= 1;
         healthText.text = playerHealth.ToString();
+        audioManager.PlaySFX(audioManager.hurt);
 
         if (playerHealth <= 0)
         {

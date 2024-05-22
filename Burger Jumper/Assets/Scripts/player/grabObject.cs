@@ -17,6 +17,13 @@ public class grabObject : MonoBehaviour
     [HideInInspector]public GameObject grabbedObject;
     private int layerIndex;
     // Start is called before the first frame update
+
+    audioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
+    }
     void Start()
     {
         layerIndex = LayerMask.NameToLayer("grab");
@@ -38,6 +45,7 @@ public class grabObject : MonoBehaviour
                 grabbedObject.GetComponent<ball>().DesactivateRb();
                 grabbedObject.transform.position = grabPoint.position;
                 grabbedObject.transform.SetParent(transform);
+                audioManager.PlaySFX(audioManager.grab);
             }
 
             else if(Keyboard.current.eKey.wasPressedThisFrame && grabbedObject){

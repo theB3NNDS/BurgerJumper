@@ -1665,7 +1665,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.68
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2200,8 +2200,13 @@ MonoBehaviour:
   musicSource: {fileID: 577024685}
   SFXSource: {fileID: 2062700963}
   background: {fileID: 8300000, guid: 3ac44da7c0d75ad4d8525729f68e8d1a, type: 3}
-  jump: {fileID: 8300000, guid: 813b086c5019c6a438bb1c7946422d3f, type: 3}
+  jump: {fileID: 8300000, guid: 29c891a8902ce6740a9dfee0c8692611, type: 3}
   stomp: {fileID: 8300000, guid: 39d15d30350f2694892c94e80c5fd418, type: 3}
+  right: {fileID: 8300000, guid: df964a1b857d15049938af2d64b3a0e0, type: 3}
+  wrong: {fileID: 8300000, guid: c2e42ae1e90dce94cb253fa386340c42, type: 3}
+  hurt: {fileID: 8300000, guid: 7596325f750109e4dab74e040584fbd7, type: 3}
+  grab: {fileID: 8300000, guid: 5ee5a9e27625f664c95b3409c687c5d6, type: 3}
+  shoot: {fileID: 8300000, guid: db31695ce0102ce41a8d90dfa6ecefc9, type: 3}
 --- !u!4 &858258108
 Transform:
   m_ObjectHideFlags: 0

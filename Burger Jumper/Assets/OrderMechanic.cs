@@ -16,6 +16,8 @@ public class OrderMechanic : MonoBehaviour
     public GameObject[] burgers;
 
     public countdownTimer timing;
+
+    audioManager audioManager;
     
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class OrderMechanic : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
     }
 
     // Update is called once per frame
@@ -74,6 +77,7 @@ public class OrderMechanic : MonoBehaviour
         } else{
             --points;
             timing.DecreaseTime();
+            audioManager.PlaySFX(audioManager.wrong);
             Debug.Log("Order" +DisplayOrderUI(Order));
             Debug.Log("Dish being prepared" + DisplayOrderUI(dishBeingPrepared));
 
@@ -113,6 +117,7 @@ public bool CompareOrderToDish(string[] dishBeingPrepared, string[] order)
     public void OrderIsCompleted(){
         orderComplete++;
         points++;
+        audioManager.PlaySFX(audioManager.right);
         timing.IncreaseTime();
     }
 

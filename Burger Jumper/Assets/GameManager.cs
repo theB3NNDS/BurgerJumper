@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 		if (Instance == null) {
 			Instance = this;
 		}
+		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
 	}
 
 	#endregion
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
 	Vector2 direction;
 	Vector2 force;
 	float distance;
+
+	audioManager audioManager;
 
 	//---------------------------------------
 	void Start ()
@@ -89,6 +92,7 @@ public class GameManager : MonoBehaviour
 		ball.ActivateRb ();
 
 		ball.Push (force);
+		audioManager.PlaySFX(audioManager.shoot);
 
 		trajectory.Hide ();
         grabObjectscript.grabbedObject = null;
