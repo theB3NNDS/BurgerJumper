@@ -20,6 +20,8 @@ public class OrderTicket : MonoBehaviour
      //3. Correct
      //4. Wrong
 
+     public GameObject[] setOfIngredients;
+
 
 
      String[] Order; 
@@ -32,8 +34,9 @@ public class OrderTicket : MonoBehaviour
     void Start()
     {
         OrderMechanic gmScript = gm.GetComponent<OrderMechanic>();
-        String[] Order = gmScript.Order;
+        Order = gmScript.Order;
         dishBeingPrepared =gmScript.dishBeingPrepared;
+        
         
       
     }
@@ -45,6 +48,7 @@ public class OrderTicket : MonoBehaviour
         // Ingredient1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;// icons[1];
         // Debug.Log(Ingredient1.transform.GetChild(0).name);
         DisplayOrder();
+
       
         
     }
@@ -67,12 +71,37 @@ public class OrderTicket : MonoBehaviour
 
     }
 
+    void CheckOrder(){
+        
+        //Compare Order and Dish set sprite
+      
+    for (int i = 0; i < dishBeingPrepared.Length; i++)
+  {
+if (dishBeingPrepared[i] == null)
+{
+    setOfIngredients[i].transform.GetChild(1).GetComponent<Image>().sprite = null; // Elements at the same index are equal
+}
+else if (dishBeingPrepared[i] != Order[i])
+{
+    setOfIngredients[i].transform.GetChild(1).GetComponent<Image>().sprite = icons[4]; // Elements at the same index are not equal
+}
+else if(dishBeingPrepared[i] == Order[i])
+{
+    setOfIngredients[i].transform.GetChild(1).GetComponent<Image>().sprite = icons[3]; // Elements at the same index are equal
+}// dishBeingPrepared[i] is null
+}
+  
+        } 
+        //if the dishbeingPrepared is null leave sprite as blank
+    
+
     void DisplayOrder(){
         SetIngredientSpriteToIngredient(Ingredient1, Order[0]);
         SetIngredientSpriteToIngredient(Ingredient2, Order[1]);
         SetIngredientSpriteToIngredient(Ingredient3, Order[2]);
         SetIngredientSpriteToIngredient(Ingredient4, Order[3]);
         SetIngredientSpriteToIngredient(Ingredient5, Order[4]);
+        CheckOrder();
     }
 
 
