@@ -15,6 +15,7 @@ public class OrderMechanic : MonoBehaviour
     public int points = 0;
     public GameObject[] burgers;
 
+    public countdownTimer timing;
     
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,6 @@ public class OrderMechanic : MonoBehaviour
     void Update()
     {
         if(CompareOrderToDish(dishBeingPrepared, Order)){
-            print(burgers);
             foreach (GameObject burger in burgers)
             {
                 burger.SetActive(true);
@@ -73,6 +73,7 @@ public class OrderMechanic : MonoBehaviour
 
         } else{
             --points;
+            timing.DecreaseTime();
             Debug.Log("Order" +DisplayOrderUI(Order));
             Debug.Log("Dish being prepared" + DisplayOrderUI(dishBeingPrepared));
 
@@ -112,6 +113,7 @@ public bool CompareOrderToDish(string[] dishBeingPrepared, string[] order)
     public void OrderIsCompleted(){
         orderComplete++;
         points++;
+        timing.IncreaseTime();
     }
 
     void DisplayOrder(String[] order){

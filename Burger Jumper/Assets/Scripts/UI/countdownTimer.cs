@@ -27,4 +27,14 @@ public class countdownTimer : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
     }
+
+    public void IncreaseTime()
+    {
+        currentTime += 30f;
+    }
+
+    public void DecreaseTime()
+    {
+        currentTime -= 10f;
+    }
 }
