@@ -7,6 +7,8 @@ TagManager:
   - Edge
   - enemy
   - ingredient
+  - Audio
+  - burger
   layers:
   - Default
   - TransparentFX

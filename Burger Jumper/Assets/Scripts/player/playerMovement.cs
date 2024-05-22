@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class playerMovement : MonoBehaviour
 {
@@ -13,11 +15,21 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 25f;
     [SerializeField] private float jumpForce = 30f;
 
+    [SerializeField] int playerHealth = 3;
+    [SerializeField] TextMeshProUGUI healthText;
+
+    audioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        healthText.text = playerHealth.ToString();
     }
 
     // Update is called once per frame
@@ -34,6 +46,7 @@ public class playerMovement : MonoBehaviour
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        audioManager.PlaySFX(audioManager.jump);
     }
 
     private void OnEnable()
@@ -48,7 +61,23 @@ public class playerMovement : MonoBehaviour
 
     private void PerformJump (InputAction.CallbackContext obj)
     {
-        
         Jump();
+    }
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "enemy"){
+            TakeDamage();
+        }
+    }
+
+    public void TakeDamage()
+    {
+        playerHealth -= 1;
+        healthText.text = playerHealth.ToString();
+        audioManager.PlaySFX(audioManager.hurt);
+
+        if (playerHealth <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
